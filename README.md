@@ -1,7 +1,9 @@
 # DataDime User Authorization Service
 
 This service is currently in development. 
+
 You can see progress on this project board: https://www.notion.so/a4c00ed6d19542d6aeeab591a7cba87d?v=ecaba0cfa7a64c78a3fa7bd57a4010a2
+
 This service is developed under Epic Link: `User Authorization Service` 
 
 This microservice handles user registration and authentication for the DataDime application.

@@ -1,7 +1,7 @@
 version: '3.1'
 services:
   db:
-    image: postgres:9.6.23-alpine3.14
+    image: postgres:12-alpine
     env_file:
       - .env
     ports:
@@ -11,7 +11,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
     volumes:
-      - /db/data-dime-user-auth:/var/lib/postgresql/data
+      - /db/postgresql-12:/var/lib/postgresql/data
 
 volumes:
   postgres_data:

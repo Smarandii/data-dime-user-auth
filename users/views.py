@@ -1,5 +1,5 @@
 import json
-from django.contrib.auth import authenticate, login
+from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth.hashers import make_password, check_password
 from django.http import HttpRequest
 from rest_framework.decorators import api_view
@@ -40,6 +40,12 @@ def api_login_user(request: HttpRequest, *args, **kwargs):
         user = User.objects.filter(username=username).first()
         user_found = user is not None
         if user_found and check_password(password, user.password):
-            return Response({"message": "Login successful"}, status=200)
+            refresh = RefreshToken.for_user(user)
+            return Response({
+                "refresh": str(refresh),
+                "access": str(refresh.access_token),
+                "message": "Login successful"
+            })
         return Response({"message": "Invalid credentials"}, status=401)
     return Response(serializer.errors, status=400)
+
